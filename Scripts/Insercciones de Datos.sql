@@ -126,15 +126,39 @@ VALUES (5, 22, 20, 'ninguna', 'ninguna', '16-5-2021', 'ninguno', 'ninguno', 5);
 INSERT INTO tabla_estadosocial_salud(idestadosocialsalud, tallavestimentanino, talla_zapatosnino, alergiasnino, medicamentostomaregularnino, ultimafechaenfermedadnino, diagnosticonino, doctortratante, idnino)
 VALUES (6, 22, 20, 'ninguna', 'ninguna', '12-4-2020', 'ninguno', 'ninguno', 6);
 /*INSERCCION TABLA_RENDIMIENTO*/
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idescalarendimiento, idnino)
-VALUES (1, 3, 1);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idescalarendimiento, idnino)
-VALUES (2, 2, 2);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idescalarendimiento, idnino)
-VALUES (3, 3, 3);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idescalarendimiento, idnino)
-VALUES (4, 3, 4);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idescalarendimiento, idnino)
-VALUES (5, 2, 5);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idescalarendimiento, idnino)
-VALUES (6, 1, 6);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (1, 1,  1, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (2, 1,  2, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (3, 1,  3, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (4, 2, 1, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (5, 2, 2, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (6, 2, 3, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (7, 3, 1, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (8, 3, 2, 1);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (9, 3, 3, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (10, 4, 1, 1);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (11, 4, 2, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (12, 4, 3, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (13, 5, 1, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (14, 5, 2, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (15, 5, 3, 1);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (16, 6, 1, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (17, 6, 2, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
+VALUES (18, 6, 3, 2);
