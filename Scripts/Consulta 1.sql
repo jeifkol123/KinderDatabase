@@ -10,5 +10,5 @@ case
   when tabla_nino.idpadre  is not null and tabla_padre.idgenero=2  then 'madre' end 
  as Representante 
 from tabla_nino 
-left join tabla_padre on tabla_nino.idnino=tabla_padre.idpadre 
+left join tabla_padre on tabla_nino.idpadre=tabla_padre.idpadre 
 left join tabla_genero on tabla_padre.idgenero=tabla_genero.idgenero;
