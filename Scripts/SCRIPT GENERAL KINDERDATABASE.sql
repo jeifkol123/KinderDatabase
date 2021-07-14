@@ -665,7 +665,7 @@ on tabla_nino.idnacionalidad = tabla_nacionalidad.idnacionalidad
 left join tabla_padre
 on tabla_padre.idpadre = tabla_nino.idpadre
 left join tabla_tutor
-on tabla_tutor.idtutor = tabla_nino.idtutor
+on tabla_tutor.idtutor = tabla_nino.idtutor;
 
 
 /*CONSULTA 5*/
