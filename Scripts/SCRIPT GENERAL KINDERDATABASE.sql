@@ -1,4 +1,3 @@
-create database kinder;
 /* TABLA_ESCALA_RENDIMIENTO                              */ 
 create table TABLA_ESCALA_RENDIMIENTO (
    IDESCALARENDIMIENTO  INT4                 not null,
@@ -46,7 +45,7 @@ create table TABLA_NINO (
    IDGENERO             INT4                 null,
    IDTUTOR              INT4                 null,
    IDPADRE              INT4                 null,
-   C_I_NINO             INT4                 null,
+   C_I_NINO             VARCHAR(10)                null,
    NOMBRENINO           VARCHAR(40)          null,
    APELLIDONINO         VARCHAR(40)          null,
    FECHANACIMIENTONINO  DATE                 null,
@@ -58,11 +57,11 @@ create table TABLA_PADRE (
    IDPADRE              INT4                 not null,
    IDNACIONALIDAD       INT4                 null,
    IDGENERO             INT4                 null,
-   C_I_PADRE            INT4                 null,
+   C_I_PADRE            VARCHAR(10)                 null,
    NOMBREPADRE          VARCHAR(40)          null,
    APELLIDOPADRE        VARCHAR(40)          null,
    DIRECCIONPADRE       VARCHAR(60)          null,
-   TELEFONOPADRE        NUMERIC(10)          null,
+   TELEFONOPADRE        VARCHAR(10)          null,
    constraint PK_TABLA_PADRE primary key (IDPADRE)
 );
 /* TABLA_PROFESIONAL                                     */
@@ -70,11 +69,11 @@ create table TABLA_PROFESIONAL (
    IDPROFESIONAL        INT4                 not null,
    IDGENERO             INT4                 null,
    IDNACIONALIDAD       INT4                 null,
-   C_I_PROFESIONAL      INT4                 null,
+   C_I_PROFESIONAL      VARCHAR(10)                 null,
    NOMBREPROFESIONAL    VARCHAR(40)          null,
    APELLIDOPROFESIONAL  VARCHAR(40)          null,
    DIRECCIONPROFESIONAL VARCHAR(60)          null,
-   TELEFONOPROFESIONAL  NUMERIC(10)          null,
+   TELEFONOPROFESIONAL  VARCHAR(10)          null,
    NUMEROCERTIFICADOPROFESIONAL INT4                 null,
    constraint PK_TABLA_PROFESIONAL primary key (IDPROFESIONAL)
 );
@@ -109,11 +108,11 @@ create table TABLA_TUTOR (
    IDTUTOR              INT4                 not null,
    IDNACIONALIDAD       INT4                 null,
    IDGENERO             INT4                 null,
-   C_I_TUTOR            INT4                 null,
+   C_I_TUTOR            VARCHAR(10)                 null,
    NOMBRETUTOR          VARCHAR(40)          null,
    APELLIDOTUTOR        VARCHAR(40)          null,
    DIRECCIONTUTOR       VARCHAR(60)          null,
-   TELEFONOTUTOR        NUMERIC(10)          null,
+   TELEFONOTUTOR        VARCHAR(10)          null,
    PARENTESCOTUTOR      VARCHAR(40)          null,
    MOTIVOTUTELA         VARCHAR(400)         null,
    constraint PK_TABLA_TUTOR primary key (IDTUTOR)
@@ -375,42 +374,42 @@ INSERT INTO tabla_programa(idprograma, nombreprograma)
 VALUES (3, 'Desarrollo Motriz');
 /*INSERCCION TABLA_PADRE  */
 INSERT INTO tabla_padre(idpadre, idnacionalidad, idgenero, c_i_padre, nombrepadre, apellidopadre, direccionpadre, telefonopadre)
-VALUES (1, 18, 1, 1324352435, 'roberto jose', 'perez arteaga', 'calle 12', 0978675643);
+VALUES (1, 18, 1, '1324352435', 'roberto jose', 'perez arteaga', 'calle 12', '0978675643');
 INSERT INTO tabla_padre(idpadre, idnacionalidad, idgenero, c_i_padre, nombrepadre, apellidopadre, direccionpadre, telefonopadre)
-VALUES (2, 18, 2, 1245767548, 'ana maria', 'lopez carrillo', 'calle 43', 09846356789);
+VALUES (2, 18, 2, '1245767548', 'ana maria', 'lopez carrillo', 'calle 43',  '0984635689');
 INSERT INTO tabla_padre(idpadre, idnacionalidad, idgenero, c_i_padre, nombrepadre, apellidopadre, direccionpadre, telefonopadre)
-VALUES (3, 13, 2, 1123345567, 'tatiana lucia', 'zambrano julianes', 'calle 1', 0978675643);
+VALUES (3, 13, 2, '1123345567', 'tatiana lucia', 'zambrano julianes', 'calle 1', '0986573643');
 INSERT INTO tabla_padre(idpadre, idnacionalidad, idgenero, c_i_padre, nombrepadre, apellidopadre, direccionpadre, telefonopadre)
-VALUES (4, 32, 1, 1878769976, 'camilo andres', 'valverde delgado', 'calle 38', 0978675643);
+VALUES (4, 32, 1, '1878769976', 'camilo andres', 'valverde delgado', 'calle 38', '098675241');
 INSERT INTO tabla_padre(idpadre, idnacionalidad, idgenero, c_i_padre, nombrepadre, apellidopadre, direccionpadre, telefonopadre)
-VALUES (5, 18, 1, 1865665679, 'ivan julian', 'mendoza robinson', 'calle 27', 0978675643);
+VALUES (5, 18, 1, '1865665679', 'ivan julian', 'mendoza robinson', 'calle 27', '097673655');
 /*INSERCCION TABLA_TUTOR */
 INSERT INTO tabla_tutor(idtutor, idnacionalidad, idgenero, c_i_tutor, nombretutor, apellidotutor, direcciontutor, telefonotutor, parentescotutor, motivotutela)
-VALUES (1, 18, 1, 678976543, 'manuel sebastian', 'baptist caceres', 'calle h67', 085787056, 'tio', 'muerte padres');
+VALUES (1, 18, 1, '6789765438', 'manuel sebastian', 'baptist caceres', 'calle h67', '0857870568', 'tio', 'muerte padres');
 /*INSERCCION TABLA_NINO*/
 INSERT INTO tabla_nino(idnino, idnacionalidad, idgenero, idtutor, idpadre, c_i_nino, nombrenino, apellidonino, fechanacimientonino, edadnino)
-VALUES (1, 18, 1, null, 1, 1312141534, 'mario alexander', 'perez macias', '27-06-2017', 4);
+VALUES (1, 18, 1, null, 1, '1312141534', 'mario alexander', 'perez macias', '27-06-2017', 4);
 INSERT INTO tabla_nino(idnino, idnacionalidad, idgenero, idtutor, idpadre, c_i_nino, nombrenino, apellidonino, fechanacimientonino, edadnino)
-VALUES (2, 18, 2, null , 2, 123465765, 'ana martina', 'lopez quijije', '02-05-2017', 4);
+VALUES (2, 18, 2, null , 2,'1234657658', 'ana martina', 'lopez quijije', '02-05-2017', 4);
 INSERT INTO tabla_nino(idnino, idnacionalidad, idgenero, idtutor, idpadre, c_i_nino, nombrenino, apellidonino, fechanacimientonino, edadnino)
-VALUES (3, 13, 1, null, 3, 124345657, 'luis andres', 'zambrano calle', '14-4-2017', 4);
+VALUES (3, 13, 1, null, 3, '1243456576', 'luis andres', 'zambrano calle', '14-4-2017', 4);
 INSERT INTO tabla_nino(idnino, idnacionalidad, idgenero, idtutor, idpadre, c_i_nino, nombrenino, apellidonino, fechanacimientonino, edadnino)
-VALUES (4, 19, 2, null , 4, 987654554, 'jorge marcos ', 'valverde vitores', '9-08-2017', 4);
+VALUES (4, 19, 2, null , 4, '8987654554', 'jorge marcos ', 'valverde vitores', '9-08-2017', 4);
 INSERT INTO tabla_nino(idnino, idnacionalidad, idgenero, idtutor, idpadre, c_i_nino, nombrenino, apellidonino, fechanacimientonino, edadnino)
-VALUES (5, 18, 1, null, 5, 246467768, 'daniel victor', 'mendoza ramonez', '5-03-2017', 4);
+VALUES (5, 18, 1, null, 5, '2464677689', 'daniel victor', 'mendoza ramonez', '5-03-2017', 4);
 INSERT INTO tabla_nino(idnino, idnacionalidad, idgenero, idtutor, idpadre, c_i_nino, nombrenino, apellidonino, fechanacimientonino, edadnino)
-VALUES (6, 18, 1, 1, null, 246467768, 'erick randall', 'baptist charless', '5-03-2017', 4);
+VALUES (6, 18, 1, 1, null, '2246467768', 'erick randall', 'baptist charless', '5-03-2017', 4);
 /*INSERCCION TABLA_PROFESIONAL */
 INSERT INTO tabla_profesional(idprofesional, idnacionalidad, idgenero, c_i_profesional, nombreprofesional, apellidoprofesional, direccionprofesional, telefonoprofesional, numerocertificadoprofesional)
-VALUES (1, 30, 2, 1815967068, 'alexandra soraya', 'valenzuela villaverde', 'calle 78', 0822922629, 196546575);
+VALUES (1, 30, 2, '1815967068', 'alexandra soraya', 'valenzuela villaverde', 'calle 78', '0822922629', 196546575);
 INSERT INTO tabla_profesional(idprofesional, idnacionalidad, idgenero, c_i_profesional, nombreprofesional, apellidoprofesional, direccionprofesional, telefonoprofesional, numerocertificadoprofesional)
-VALUES (2, 23, 2, 1006605843, 'vanesa belen', 'bertrán maestre', 'calle 53', 0889498545, 234423026);
+VALUES (2, 23, 2, '1006605843', 'vanesa belen', 'bertrán maestre', 'calle 53', '0889498545', 234423026);
 INSERT INTO tabla_profesional(idprofesional, idnacionalidad, idgenero, c_i_profesional, nombreprofesional, apellidoprofesional, direccionprofesional, telefonoprofesional, numerocertificadoprofesional)
-VALUES (3, 16, 2, 1690894615, 'tatiana lucia', 'zambrano julianes', 'calle 81', 0825520354, 721494152);
+VALUES (3, 16, 2, '1690894615', 'tatiana lucia', 'zambrano julianes', 'calle 81', '0825520354', 721494152);
 INSERT INTO tabla_profesional(idprofesional, idnacionalidad, idgenero, c_i_profesional, nombreprofesional, apellidoprofesional, direccionprofesional, telefonoprofesional, numerocertificadoprofesional)
-VALUES (4, 18, 1, 1782641935, 'camilo andres', 'valverde delgado', 'calle 98', 0958050380, 79925619);
+VALUES (4, 18, 1, '1782641935', 'camilo andres', 'valverde delgado', 'calle 98', '0958050380', 79925619);
 INSERT INTO tabla_profesional(idprofesional, idnacionalidad, idgenero, c_i_profesional, nombreprofesional, apellidoprofesional, direccionprofesional, telefonoprofesional, numerocertificadoprofesional)
-VALUES (5, 18, 1, 1366695096, 'ivan julian', 'mendoza robinson', 'calle 77', 0957162650, 981746660);
+VALUES (5, 18, 1, '1366695096', 'ivan julian', 'mendoza robinson', 'calle 77', '0957162650', 981746660);
 /*INSERCCION TABLA_PROPUESTA */
 INSERT INTO tabla_propuesta(	idpropuesta, idprograma, idprofesional, detallepropuesta, 	materialesausarprograma, mesesduracionprograma)
 VALUES (1, 1, 1, 'Crear una serie de actividades para mejorar las capacidades intelectuales', 'hojas, cuadernos, carpetas, lapices de colores, crayones, pinturas, legos, rompecabezas', 6);
@@ -537,7 +536,6 @@ order by tabla_genero.genero ;
 /*para comprobacion de que es valido el Script de consulta cambiamos de genero a uno de los profesionales para 
 que se refleje que si hace la debida consulta detallando cuantos profesionales son hombres y mujeres en cada 
 programa
-
 update public.tabla_profesional
 	set  idgenero=2
 	where tabla_profesional.idprofesional=5;
