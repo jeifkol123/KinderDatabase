@@ -1,13 +1,43 @@
-/* TABLA_ESCALA_RENDIMIENTO                              */ 
+
+/* TABLA: TABLA_PROGRAMA                                    */
+create table TABLA_PROGRAMA (
+   IDPROGRAMA           INT4                 not null,
+   NOMBREPROGRAMA       VARCHAR(50)          not null,
+   constraint PK_TABLA_PROGRAMA primary key (IDPROGRAMA)
+);
+
+/* TABLA: INSCRIPCION_NINO                                      */
+
+create table INSCRIPCION_NINO (
+   IDNINO               INT4                 not null,
+   IDINSCRIPCION        INT4                 not null,
+   constraint PK_INSCRIPCION_NINO primary key (IDNINO, IDINSCRIPCION)
+);
+
+
+/* TABLA: RENDIMIENTO_NINO                                      */
+
+create table RENDIMIENTO_NINO (
+   IDRENDIMIENTONINO    INT4                 not null,
+   IDNINO               INT4                 not null,
+   constraint PK_RENDIMIENTO_NINO primary key (IDRENDIMIENTONINO, IDNINO)
+);
+
+
+/* TABLA_ESCALA_RENDIMIENTO                              */
+
 create table TABLA_ESCALA_RENDIMIENTO (
    IDESCALARENDIMIENTO  INT4                 not null,
    ESCALARENDIMIENTO    VARCHAR(20)          null,
    constraint PK_TABLA_ESCALA_RENDIMIENTO primary key (IDESCALARENDIMIENTO)
 );
+
+
 /* TABLA_ESTADOSOCIAL_SALUD                              */
+
 create table TABLA_ESTADOSOCIAL_SALUD (
    IDESTADOSOCIALSALUD  INT4                 not null,
-   IDNINO               INT4                 null,
+   IDNINO               INT4                 not null,
    TALLAVESTIMENTANINO  NUMERIC(2)           null,
    TALLA_ZAPATOSNINO    NUMERIC(2)           null,
    ALERGIASNINO         VARCHAR(400)         null,
@@ -17,98 +47,33 @@ create table TABLA_ESTADOSOCIAL_SALUD (
    DOCTORTRATANTE       VARCHAR(40)          null,
    constraint PK_TABLA_ESTADOSOCIAL_SALUD primary key (IDESTADOSOCIALSALUD)
 );
+
 /* TABLA_GENERO                                          */
+
 create table TABLA_GENERO (
    IDGENERO             INT4                 not null,
    GENERO               VARCHAR(40)          null,
    constraint PK_TABLA_GENERO primary key (IDGENERO)
 );
+
 /* TABLA_INSCRIPCION                                     */
+
 create table TABLA_INSCRIPCION (
    IDINSCRIPCION        INT4                 not null,
-   IDNINO               INT4                 null,
-   IDPROPUESTA          INT4                 null,
+   IDPROPUESTA          INT4                 not null,
    ANOLECTIVOINSCRIPCION NUMERIC(4)           null,
    FECHAINSCRIPCION     DATE                 null,
    constraint PK_TABLA_INSCRIPCION primary key (IDINSCRIPCION)
 );
-/* TABLA_NACIONALIDAD                                    */
-create table TABLA_NACIONALIDAD (
-   IDNACIONALIDAD       INT4                 not null,
-   PAIS                 VARCHAR(40)          null,
-   constraint PK_TABLA_NACIONALIDAD primary key (IDNACIONALIDAD)
-);
-/* TABLA_NINO                                            */
-create table TABLA_NINO (
-   IDNINO               INT4                 not null,
-   IDNACIONALIDAD       INT4                 null,
-   IDGENERO             INT4                 null,
-   IDTUTOR              INT4                 null,
-   IDPADRE              INT4                 null,
-   C_I_NINO             VARCHAR(10)                null,
-   NOMBRENINO           VARCHAR(40)          null,
-   APELLIDONINO         VARCHAR(40)          null,
-   FECHANACIMIENTONINO  DATE                 null,
-   EDADNINO             INT4                 null,
-   constraint PK_TABLA_NINO primary key (IDNINO)
-);
-/* TABLA_PADRE                                           */
-create table TABLA_PADRE (
-   IDPADRE              INT4                 not null,
-   IDNACIONALIDAD       INT4                 null,
-   IDGENERO             INT4                 null,
-   C_I_PADRE            VARCHAR(10)                 null,
-   NOMBREPADRE          VARCHAR(40)          null,
-   APELLIDOPADRE        VARCHAR(40)          null,
-   DIRECCIONPADRE       VARCHAR(60)          null,
-   TELEFONOPADRE        VARCHAR(10)          null,
-   constraint PK_TABLA_PADRE primary key (IDPADRE)
-);
-/* TABLA_PROFESIONAL                                     */
-create table TABLA_PROFESIONAL (
-   IDPROFESIONAL        INT4                 not null,
-   IDGENERO             INT4                 null,
-   IDNACIONALIDAD       INT4                 null,
-   C_I_PROFESIONAL      VARCHAR(10)                 null,
-   NOMBREPROFESIONAL    VARCHAR(40)          null,
-   APELLIDOPROFESIONAL  VARCHAR(40)          null,
-   DIRECCIONPROFESIONAL VARCHAR(60)          null,
-   TELEFONOPROFESIONAL  VARCHAR(10)          null,
-   NUMEROCERTIFICADOPROFESIONAL INT4                 null,
-   constraint PK_TABLA_PROFESIONAL primary key (IDPROFESIONAL)
-);
-/* TABLA_PROGRAMA                                        */
- 
-create table TABLA_PROGRAMA (
-   IDPROGRAMA           INT4                 not null,
-   NOMBREPROGRAMA       VARCHAR(50)          not null,
-   constraint PK_TABLA_PROGRAMA primary key (IDPROGRAMA)
-);
-/* TABLA_PROPUESTA                                       */
-create table TABLA_PROPUESTA (
-   IDPROPUESTA          INT4                 not null,
-   IDPROFESIONAL        INT4                 null,
-   IDPROGRAMA           INT4                 null,
-   DETALLEPROPUESTA     VARCHAR(2000)        null,
-   MATERIALESAUSARPROGRAMA VARCHAR(2000)        null,
-   MESESDURACIONPROGRAMA INT4                 null,
-   constraint PK_TABLA_PROPUESTA primary key (IDPROPUESTA)
-);
-/* TABLA_RENDIMIENTO_NINO                                */
- 
-create table TABLA_RENDIMIENTO_NINO (
-   IDRENDIMIENTONINO    INT4                 not null,
-   IDNINO               INT4                 null,
-   IDPROGRAMA           INT4                 null,
-   IDESCALARENDIMIENTO  INT4                 null,
-   constraint PK_TABLA_RENDIMIENTO_NINO primary key (IDRENDIMIENTONINO)
-);
+
+
 /* TABLA_TUTOR                                           */
+
 create table TABLA_TUTOR (
    IDTUTOR              INT4                 not null,
-   IDNACIONALIDAD       INT4                 null,
-   IDGENERO             INT4                 null,
-   C_I_TUTOR            VARCHAR(10)                 null,
+   IDNACIONALIDAD       INT4                 not null,
+   IDGENERO             INT4                 not null,
+   C_I_TUTOR            VARCHAR(10)          null,
    NOMBRETUTOR          VARCHAR(40)          null,
    APELLIDOTUTOR        VARCHAR(40)          null,
    DIRECCIONTUTOR       VARCHAR(60)          null,
@@ -118,18 +83,98 @@ create table TABLA_TUTOR (
    constraint PK_TABLA_TUTOR primary key (IDTUTOR)
 );
 
+
+/* TABLA_RENDIMIENTO_NINO                                */
+
+create table TABLA_RENDIMIENTO_NINO (
+   IDRENDIMIENTONINO    INT4                 not null,
+   IDPROGRAMA           INT4                 not null,
+   IDESCALARENDIMIENTO  INT4                 not null,
+   constraint PK_TABLA_RENDIMIENTO_NINO primary key (IDRENDIMIENTONINO)
+);
+
+
+/* TABLA_PADRE                                           */
+
+create table TABLA_PADRE (
+   IDPADRE              INT4                 not null,
+   IDNACIONALIDAD       INT4                 not null,
+   IDGENERO             INT4                 not null,
+   C_I_PADRE            VARCHAR(10)          null,
+   NOMBREPADRE          VARCHAR(40)          null,
+   APELLIDOPADRE        VARCHAR(40)          null,
+   DIRECCIONPADRE       VARCHAR(60)          null,
+   TELEFONOPADRE        VARCHAR(10)          null,
+   constraint PK_TABLA_PADRE primary key (IDPADRE)
+);
+
+
+/* TABLA_NACIONALIDAD                                    */
+
+create table TABLA_NACIONALIDAD (
+   IDNACIONALIDAD       INT4                 not null,
+   PAIS                 VARCHAR(40)          null,
+   constraint PK_TABLA_NACIONALIDAD primary key (IDNACIONALIDAD)
+);
+
+
+
+/* TABLA_NINO                                            */
+
+create table TABLA_NINO (
+   IDNINO               INT4                 not null,
+   IDPADRE              INT4                 null,
+   IDTUTOR              INT4                 null,
+   IDNACIONALIDAD       INT4                 not null,
+   IDGENERO             INT4                 not null,
+   C_I_NINO             VARCHAR(10)          null,
+   NOMBRENINO           VARCHAR(40)          null,
+   APELLIDONINO         VARCHAR(40)          null,
+   FECHANACIMIENTONINO  DATE                 null,
+   EDADNINO             INT4                 null,
+   constraint PK_TABLA_NINO primary key (IDNINO)
+);
+
+
+/* TABLA_PROFESIONAL                                     */
+
+create table TABLA_PROFESIONAL (
+   IDPROFESIONAL        INT4                 not null,
+   IDNACIONALIDAD       INT4                 not null,
+   IDGENERO             INT4                 not null,
+   C_I_PROFESIONAL      VARCHAR(10)          null,
+   NOMBREPROFESIONAL    VARCHAR(40)          null,
+   APELLIDOPROFESIONAL  VARCHAR(40)          null,
+   DIRECCIONPROFESIONAL VARCHAR(60)          null,
+   TELEFONOPROFESIONAL  VARCHAR(10)          null,
+   NUMEROCERTIFICADOPROFESIONAL INT4                 null,
+   constraint PK_TABLA_PROFESIONAL primary key (IDPROFESIONAL)
+);
+
+
+/* TABLA_PROPUESTA                                       */
+
+create table TABLA_PROPUESTA (
+   IDPROPUESTA          INT4                 not null,
+   IDPROFESIONAL        INT4                 not null,
+   IDPROGRAMA           INT4                 not null,
+   DETALLEPROPUESTA     VARCHAR(2000)        null,
+   MATERIALESAUSARPROGRAMA VARCHAR(2000)        null,
+   MESESDURACIONPROGRAMA INT4                 null,
+   constraint PK_TABLA_PROPUESTA primary key (IDPROPUESTA)
+);
 /*INDICES EN POSTGRESQL*/
+
 /* Index: TABLA_ESCALA_RENDIMIENTO_PK                           */
 create unique index TABLA_ESCALA_RENDIMIENTO_PK on TABLA_ESCALA_RENDIMIENTO (
 IDESCALARENDIMIENTO
 );
 /* Index: TABLA_ESTADOSOCIAL_SALUD_PK                           */
-
 create unique index TABLA_ESTADOSOCIAL_SALUD_PK on TABLA_ESTADOSOCIAL_SALUD (
 IDESTADOSOCIALSALUD
 );
-/* Index: NIN_ESTSOC_FK                                         */
-create  index NIN_ESTSOC_FK on TABLA_ESTADOSOCIAL_SALUD (
+/* Index: POSEE2_FK                                             */
+create  index POSEE2_FK on TABLA_ESTADOSOCIAL_SALUD (
 IDNINO
 );
 /* Index: TABLA_GENERO_PK                                       */
@@ -140,12 +185,8 @@ IDGENERO
 create unique index TABLA_INSCRIPCION_PK on TABLA_INSCRIPCION (
 IDINSCRIPCION
 );
-/* Index: NIN_INSCRIP_FK                                        */
-create  index NIN_INSCRIP_FK on TABLA_INSCRIPCION (
-IDNINO
-);
-/* Index: PROP_INSCRIP_FK                                       */
-create  index PROP_INSCRIP_FK on TABLA_INSCRIPCION (
+/* Index: TIENE13_FK                                            */
+create  index TIENE13_FK on TABLA_INSCRIPCION (
 IDPROPUESTA
 );
 /* Index: TABLA_NACIONALIDAD_PK                                 */
@@ -156,169 +197,168 @@ IDNACIONALIDAD
 create unique index TABLA_NINO_PK on TABLA_NINO (
 IDNINO
 );
-/* Index: GEN_NIN_FK                                            */
-create  index GEN_NIN_FK on TABLA_NINO (
-IDGENERO
+/* Index: POSEE_FK                                              */
+create  index POSEE_FK on TABLA_NINO (
+IDPADRE
 );
-/* Index: NAC_NIN_FK                                            */
-create  index NAC_NIN_FK on TABLA_NINO (
-IDNACIONALIDAD
-);
-/* Index: TUT_NIN_FK                                            */
-
-create  index TUT_NIN_FK on TABLA_NINO (
+/* Index: TIENE9_FK                                             */
+create  index TIENE9_FK on TABLA_NINO (
 IDTUTOR
 );
-/* Index: PAD_NIN_FK                                            */
-create  index PAD_NIN_FK on TABLA_NINO (
-IDPADRE
+/* Index: TIENE7_FK                                             */
+create  index TIENE7_FK on TABLA_NINO (
+IDNACIONALIDAD
+);
+/* Index: TIENE10_FK                                            */
+create  index TIENE10_FK on TABLA_NINO (
+IDGENERO
 );
 /* Index: TABLA_PADRE_PK                                        */
 create unique index TABLA_PADRE_PK on TABLA_PADRE (
 IDPADRE
 );
-/* Index: GEN_PAD_FK                                            */
-create  index GEN_PAD_FK on TABLA_PADRE (
-IDGENERO
-);
-/* Index: NAC_PAD_FK                                            */
-create  index NAC_PAD_FK on TABLA_PADRE (
+/* Index: TIENE11_FK                                            */
+create  index TIENE11_FK on TABLA_PADRE (
 IDNACIONALIDAD
+);
+/* Index: TIENE12_FK                                            */
+create  index TIENE12_FK on TABLA_PADRE (
+IDGENERO
 );
 /* Index: TABLA_PROFESIONAL_PK                                  */
 create unique index TABLA_PROFESIONAL_PK on TABLA_PROFESIONAL (
 IDPROFESIONAL
 );
-/* Index: GEN_PROF_FK                                           */
-create  index GEN_PROF_FK on TABLA_PROFESIONAL (
-IDGENERO
-);
-/* Index: NAC_PROF_FK                                           */
-create  index NAC_PROF_FK on TABLA_PROFESIONAL (
+/* Index: TIENE6_FK                                             */
+create  index TIENE6_FK on TABLA_PROFESIONAL (
 IDNACIONALIDAD
+);
+/* Index: TIENE4_FK                                             */
+create  index TIENE4_FK on TABLA_PROFESIONAL (
+IDGENERO
 );
 /* Index: TABLA_PROPUESTA_PK                                    */
 create unique index TABLA_PROPUESTA_PK on TABLA_PROPUESTA (
 IDPROPUESTA
 );
-/* Index: PROF_PROP_FK                                          */
-create  index PROF_PROP_FK on TABLA_PROPUESTA (
+/* Index: TIENE3_FK                                             */
+create  index TIENE3_FK on TABLA_PROPUESTA (
 IDPROFESIONAL
 );
 /* Index: TABLA_RENDIMIENTO_NINO_PK                             */
 create unique index TABLA_RENDIMIENTO_NINO_PK on TABLA_RENDIMIENTO_NINO (
 IDRENDIMIENTONINO
 );
-/* Index: NIN_RENDIM_FK                                         */
-create  index NIN_RENDIM_FK on TABLA_RENDIMIENTO_NINO (
-IDNINO
-);
-/* Index: ESCAL_RENDIM_FK                                       */
-create  index ESCAL_RENDIM_FK on TABLA_RENDIMIENTO_NINO (
+/* Index: TIENE1_FK                                             */
+create  index TIENE1_FK on TABLA_RENDIMIENTO_NINO (
 IDESCALARENDIMIENTO
 );
 /* Index: TABLA_TUTOR_PK                                        */
 create unique index TABLA_TUTOR_PK on TABLA_TUTOR (
 IDTUTOR
 );
-/* Index: GEN_TUT_FK                                            */
-create  index GEN_TUT_FK on TABLA_TUTOR (
-IDGENERO
-);
-/* Index: NAC_TUT_FK                                            */
-create  index NAC_TUT_FK on TABLA_TUTOR (
+/* Index: TIENE5_FK                                             */
+create  index TIENE5_FK on TABLA_TUTOR (
 IDNACIONALIDAD
 );
+/* Index: TIENE8_FK                                             */
+create  index TIENE8_FK on TABLA_TUTOR (
+IDGENERO
+);
+
+
+
+/*CLAVES FORÁNEAS						*/
+alter table INSCRIPCION_NINO
+   add constraint FK_INSCRIPC_INSCRIPCI_TABLA_NI foreign key (IDNINO)
+      references TABLA_NINO (IDNINO)
+      on delete restrict on update restrict;
+
+alter table INSCRIPCION_NINO
+   add constraint FK_INSCRIPC_INSCRIPCI_TABLA_IN foreign key (IDINSCRIPCION)
+      references TABLA_INSCRIPCION (IDINSCRIPCION)
+      on delete restrict on update restrict;
+
+alter table RENDIMIENTO_NINO
+   add constraint FK_RENDIMIE_RENDIMIEN_TABLA_RE foreign key (IDRENDIMIENTONINO)
+      references TABLA_RENDIMIENTO_NINO (IDRENDIMIENTONINO)
+      on delete restrict on update restrict;
+
+alter table RENDIMIENTO_NINO
+   add constraint FK_RENDIMIE_RENDIMIEN_TABLA_NI foreign key (IDNINO)
+      references TABLA_NINO (IDNINO)
+      on delete restrict on update restrict;
 
 alter table TABLA_ESTADOSOCIAL_SALUD
-   add constraint FK_TABLA_ES_NIN_ESTSO_TABLA_NI foreign key (IDNINO)
+   add constraint FK_TABLA_ES_POSEE2_TABLA_NI foreign key (IDNINO)
       references TABLA_NINO (IDNINO)
       on delete restrict on update restrict;
 
 alter table TABLA_INSCRIPCION
-   add constraint FK_TABLA_IN_NIN_INSCR_TABLA_NI foreign key (IDNINO)
-      references TABLA_NINO (IDNINO)
-      on delete restrict on update restrict;
-
-alter table TABLA_INSCRIPCION
-   add constraint FK_TABLA_IN_PROP_INSC_TABLA_PR foreign key (IDPROPUESTA)
+   add constraint FK_TABLA_IN_TIENE13_TABLA_PR foreign key (IDPROPUESTA)
       references TABLA_PROPUESTA (IDPROPUESTA)
       on delete restrict on update restrict;
 
 alter table TABLA_NINO
-   add constraint FK_TABLA_NI_GEN_NIN_TABLA_GE foreign key (IDGENERO)
-      references TABLA_GENERO (IDGENERO)
-      on delete restrict on update restrict;
-
-alter table TABLA_NINO
-   add constraint FK_TABLA_NI_NAC_NIN_TABLA_NA foreign key (IDNACIONALIDAD)
-      references TABLA_NACIONALIDAD (IDNACIONALIDAD)
-      on delete restrict on update restrict;
-
-alter table TABLA_NINO
-   add constraint FK_TABLA_NI_PAD_NIN_TABLA_PA foreign key (IDPADRE)
+   add constraint FK_TABLA_NI_POSEE_TABLA_PA foreign key (IDPADRE)
       references TABLA_PADRE (IDPADRE)
       on delete restrict on update restrict;
 
 alter table TABLA_NINO
-   add constraint FK_TABLA_NI_TUT_NIN_TABLA_TU foreign key (IDTUTOR)
+   add constraint FK_TABLA_NI_TIENE10_TABLA_GE foreign key (IDGENERO)
+      references TABLA_GENERO (IDGENERO)
+      on delete restrict on update restrict;
+
+alter table TABLA_NINO
+   add constraint FK_TABLA_NI_TIENE7_TABLA_NA foreign key (IDNACIONALIDAD)
+      references TABLA_NACIONALIDAD (IDNACIONALIDAD)
+      on delete restrict on update restrict;
+
+alter table TABLA_NINO
+   add constraint FK_TABLA_NI_TIENE9_TABLA_TU foreign key (IDTUTOR)
       references TABLA_TUTOR (IDTUTOR)
       on delete restrict on update restrict;
 
 alter table TABLA_PADRE
-   add constraint FK_TABLA_PA_GEN_PAD_TABLA_GE foreign key (IDGENERO)
-      references TABLA_GENERO (IDGENERO)
+   add constraint FK_TABLA_PA_TIENE11_TABLA_NA foreign key (IDNACIONALIDAD)
+      references TABLA_NACIONALIDAD (IDNACIONALIDAD)
       on delete restrict on update restrict;
 
 alter table TABLA_PADRE
-   add constraint FK_TABLA_PA_NAC_PAD_TABLA_NA foreign key (IDNACIONALIDAD)
-      references TABLA_NACIONALIDAD (IDNACIONALIDAD)
-      on delete restrict on update restrict;
-
-alter table TABLA_PROFESIONAL
-   add constraint FK_TABLA_PR_GEN_PROF_TABLA_GE foreign key (IDGENERO)
+   add constraint FK_TABLA_PA_TIENE12_TABLA_GE foreign key (IDGENERO)
       references TABLA_GENERO (IDGENERO)
       on delete restrict on update restrict;
 
 alter table TABLA_PROFESIONAL
-   add constraint FK_TABLA_PR_NAC_PROF_TABLA_NA foreign key (IDNACIONALIDAD)
+   add constraint FK_TABLA_PR_TIENE4_TABLA_GE foreign key (IDGENERO)
+      references TABLA_GENERO (IDGENERO)
+      on delete restrict on update restrict;
+
+alter table TABLA_PROFESIONAL
+   add constraint FK_TABLA_PR_TIENE6_TABLA_NA foreign key (IDNACIONALIDAD)
       references TABLA_NACIONALIDAD (IDNACIONALIDAD)
       on delete restrict on update restrict;
 
 alter table TABLA_PROPUESTA
-   add constraint FK_TABLA_PR_PROF_PROP_TABLA_PR foreign key (IDPROFESIONAL)
+   add constraint FK_TABLA_PR_TIENE3_TABLA_PR foreign key (IDPROFESIONAL)
       references TABLA_PROFESIONAL (IDPROFESIONAL)
       on delete restrict on update restrict;
 
-alter table TABLA_PROPUESTA
-   add constraint FK_TABLA_PR_PROP_INSC_TABLA_PR foreign key (IDPROGRAMA)
-      references TABLA_PROGRAMA (IDPROGRAMA)
-      on delete restrict on update restrict;
-
 alter table TABLA_RENDIMIENTO_NINO
-   add constraint FK_TABLA_RE_ESCAL_REN_TABLA_ES foreign key (IDESCALARENDIMIENTO)
+   add constraint FK_TABLA_RE_TIENE1_TABLA_ES foreign key (IDESCALARENDIMIENTO)
       references TABLA_ESCALA_RENDIMIENTO (IDESCALARENDIMIENTO)
       on delete restrict on update restrict;
 
-alter table TABLA_RENDIMIENTO_NINO
-   add constraint FK_TABLA_RE_NIN_RENDI_TABLA_NI foreign key (IDNINO)
-      references TABLA_NINO (IDNINO)
-      on delete restrict on update restrict;
-
-alter table TABLA_RENDIMIENTO_NINO
-   add constraint FK_TABLA_RE_PROP_INSC_TABLA_PR foreign key (IDPROGRAMA)
-      references TABLA_PROGRAMA (IDPROGRAMA)
+alter table TABLA_TUTOR
+   add constraint FK_TABLA_TU_TIENE5_TABLA_NA foreign key (IDNACIONALIDAD)
+      references TABLA_NACIONALIDAD (IDNACIONALIDAD)
       on delete restrict on update restrict;
 
 alter table TABLA_TUTOR
-   add constraint FK_TABLA_TU_GEN_TUT_TABLA_GE foreign key (IDGENERO)
+   add constraint FK_TABLA_TU_TIENE8_TABLA_GE foreign key (IDGENERO)
       references TABLA_GENERO (IDGENERO)
       on delete restrict on update restrict;
 
-alter table TABLA_TUTOR
-   add constraint FK_TABLA_TU_NAC_TUT_TABLA_NA foreign key (IDNACIONALIDAD)
-      references TABLA_NACIONALIDAD (IDNACIONALIDAD)
-      on delete restrict on update restrict;
 
 
 /*INSERCCION TABLA_GENERO*/
@@ -422,18 +462,18 @@ VALUES (4, 1, 2, 'ir a la biblioteca', 'hojas, cuadernos, carpetas, lapices de c
 INSERT INTO tabla_propuesta( idpropuesta, idprograma, idprofesional, detallepropuesta, materialesausarprograma, mesesduracionprograma)
 VALUES (5, 3, 4, 'Salir de paseo', 'lapices colores, hojas, juguetes', 5);
 /*INSERCCION TABLA_INSCRIPCION  */
-INSERT INTO tabla_inscripcion(idinscripcion, idnino, idpropuesta, anolectivoinscripcion, fechainscripcion)
-VALUES (1, 1, 1, 2021, '4-2-2021');
-INSERT INTO tabla_inscripcion(idinscripcion, idnino, idpropuesta, anolectivoinscripcion, fechainscripcion)
-VALUES (2, 2, 2, 2021, '5-2-2021');
-INSERT INTO tabla_inscripcion(idinscripcion, idnino, idpropuesta, anolectivoinscripcion, fechainscripcion)
-VALUES (3, 3, 1, 2021, '4-2-2021');
-INSERT INTO tabla_inscripcion(idinscripcion, idnino, idpropuesta, anolectivoinscripcion, fechainscripcion)
-VALUES (4, 4, 3, 2021, '5-2-2021');
-INSERT INTO tabla_inscripcion(idinscripcion, idnino, idpropuesta, anolectivoinscripcion, fechainscripcion)
-VALUES (5, 5, 2, 2021, '5-2-2021');
-INSERT INTO tabla_inscripcion(idinscripcion, idnino, idpropuesta, anolectivoinscripcion, fechainscripcion)
-VALUES (6, 6, 3, 2021, '6-2-2021');
+INSERT INTO tabla_inscripcion(idinscripcion, idpropuesta, anolectivoinscripcion, fechainscripcion)
+VALUES (1,  1, 2021, '4-2-2021');
+INSERT INTO tabla_inscripcion(idinscripcion, idpropuesta, anolectivoinscripcion, fechainscripcion)
+VALUES (2,  2, 2021, '5-2-2021');
+INSERT INTO tabla_inscripcion(idinscripcion, idpropuesta, anolectivoinscripcion, fechainscripcion)
+VALUES (3,  1, 2021, '4-2-2021');
+INSERT INTO tabla_inscripcion(idinscripcion, idpropuesta, anolectivoinscripcion, fechainscripcion)
+VALUES (4,  3, 2021, '5-2-2021');
+INSERT INTO tabla_inscripcion(idinscripcion, idpropuesta, anolectivoinscripcion, fechainscripcion)
+VALUES (5,  2, 2021, '5-2-2021');
+INSERT INTO tabla_inscripcion(idinscripcion, idpropuesta, anolectivoinscripcion, fechainscripcion)
+VALUES (6,  3, 2021, '6-2-2021');
 /*INSERCCION TABLA_ESTADOSOCIAL */
 INSERT INTO tabla_estadosocial_salud(idestadosocialsalud, tallavestimentanino, talla_zapatosnino, alergiasnino, medicamentostomaregularnino, ultimafechaenfermedadnino, diagnosticonino, doctortratante, idnino)
 VALUES (1, 24, 21, 'perros', 'alergisist', '2-3-2021', 'alergia aguda mantener alejado de perros', 'dr. jose', 1);
@@ -448,42 +488,117 @@ VALUES (5, 22, 20, 'ninguna', 'ninguna', '16-5-2021', 'ninguno', 'ninguno', 5);
 INSERT INTO tabla_estadosocial_salud(idestadosocialsalud, tallavestimentanino, talla_zapatosnino, alergiasnino, medicamentostomaregularnino, ultimafechaenfermedadnino, diagnosticonino, doctortratante, idnino)
 VALUES (6, 22, 20, 'ninguna', 'ninguna', '12-4-2020', 'ninguno', 'ninguno', 6);
 /*INSERCCION TABLA_RENDIMIENTO*/
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (1, 1,  1, 2);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (2, 1,  2, 3);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (3, 1,  3, 2);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (4, 2, 1, 3);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (5, 2, 2, 3);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (6, 2, 3, 2);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (7, 3, 1, 2);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (8, 3, 2, 1);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (9, 3, 3, 3);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (10, 4, 1, 1);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (11, 4, 2, 2);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (12, 4, 3, 2);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (13, 5, 1, 3);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (14, 5, 2, 3);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (15, 5, 3, 1);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (16, 6, 1, 3);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (17, 6, 2, 2);
-INSERT INTO tabla_rendimiento_nino(idrendimientonino, idnino, idprograma, idescalarendimiento)
-VALUES (18, 6, 3, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (1,   1, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (2,   2, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (3,   3, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (4,  1, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (5,  2, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (6,  3, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (7,  1, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (8,  2, 1);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (9,  3, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (10,  1, 1);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (11,  2, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (12,  3, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (13,  1, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (14,  2, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (15,  3, 1);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (16,  1, 3);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (17,  2, 2);
+INSERT INTO tabla_rendimiento_nino(idrendimientonino,  idprograma, idescalarendimiento)
+VALUES (18,  3, 2);
+/*INSERCCION TABLA RENDIMIENTO del NINO*/
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (1, 1);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (2, 1);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (3, 1);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (4, 2);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (5, 2);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (6, 2);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (7, 3);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (8, 3);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (9, 3);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (10, 4);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (11, 4);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (12, 4);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (13, 5);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (14, 5);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (15, 5);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (16, 6);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (17, 6);
+INSERT INTO rendimiento_nino(
+idrendimientonino, idnino)
+VALUES (18, 6);
+
+/*INSERCCION TABLA INSCRIPCION del NINO*/
+INSERT INTO inscripcion_nino(
+idnino, idinscripcion)
+VALUES (1, 1);
+INSERT INTO inscripcion_nino(
+idnino, idinscripcion)
+VALUES (2, 2);
+INSERT INTO inscripcion_nino(
+idnino, idinscripcion)
+VALUES (3, 3);
+INSERT INTO inscripcion_nino(
+idnino, idinscripcion)
+VALUES (4, 4);
+INSERT INTO inscripcion_nino(
+idnino, idinscripcion)
+VALUES (5, 5);
+INSERT INTO inscripcion_nino(
+idnino, idinscripcion)
+VALUES (6, 6);
 
 /*CONSULTA 1*/
 select tabla_nino.nombrenino, tabla_nino.apellidonino,
