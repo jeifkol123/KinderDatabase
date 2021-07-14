@@ -533,6 +533,41 @@ group by tabla_genero.genero,
 tabla_programa.nombreprograma,
 tabla_profesional.idgenero,tabla_genero.idgenero
 order by tabla_genero.genero ;
+/*CONSULTA 4*/
+select tabla_nino.nombrenino, tabla_nacionalidad.pais,tabla_nino.edadnino,
+case
+  when tabla_nino.idtutor is not null then tabla_tutor.nombretutor
+  when tabla_nino.idpadre  is not null then tabla_padre.nombrepadre end 
+as Nombre_Representante,
+case
+  when tabla_nino.idtutor is not null then tabla_tutor.parentescotutor
+  when tabla_nino.idpadre  is not null and tabla_padre.idgenero=1  then 'padre' 
+  when tabla_nino.idpadre  is not null and tabla_padre.idgenero=2  then 'madre' end 
+ as parentesco 
+from tabla_nino
+left join tabla_nacionalidad
+on tabla_nino.idnacionalidad = tabla_nacionalidad.idnacionalidad
+left join tabla_padre
+on tabla_padre.idpadre = tabla_nino.idpadre
+left join tabla_tutor
+on tabla_tutor.idtutor = tabla_nino.idtutor
+
+
+/*CONSULTA 5*/
+select tabla_profesional.nombreprofesional, tabla_nacionalidad.pais, tabla_propuesta.detallepropuesta
+,tabla_programa.nombreprograma, count(*) as total_alumnos
+from tabla_profesional
+inner join tabla_nacionalidad
+on tabla_profesional.idnacionalidad = tabla_nacionalidad.idnacionalidad
+left join tabla_propuesta
+on tabla_propuesta.idprofesional = tabla_profesional.idprofesional
+left join tabla_inscripcion
+on tabla_propuesta.idpropuesta = tabla_inscripcion.idpropuesta
+left join tabla_programa
+on tabla_propuesta.idprograma = tabla_programa.idprograma
+group by tabla_profesional.nombreprofesional, tabla_nacionalidad.pais, tabla_propuesta.detallepropuesta
+,tabla_programa.nombreprograma
+order by tabla_programa.nombreprograma;
 /*para comprobacion de que es valido el Script de consulta cambiamos de genero a uno de los profesionales para 
 que se refleje que si hace la debida consulta detallando cuantos profesionales son hombres y mujeres en cada 
 programa
